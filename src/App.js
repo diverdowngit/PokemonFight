@@ -1,5 +1,10 @@
 import './App.css';
 import { Switch, Route } from "react-router-dom";
+import Navbar from './components/Navbar/Navbar'
+import Main from './components/Main/Main'
+import Footer from './components/Footer/Footer'
+
+
 
 function App() {
 
@@ -10,6 +15,7 @@ function App() {
     <div className="App">
 
       {/* Placeholder for NAVBAR */}
+      <h1>Poke Fight</h1>
 
       <Switch>
 
