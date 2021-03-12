@@ -2,6 +2,10 @@ import './App.css';
 import { Switch, Route } from "react-router-dom";
 
 function App() {
+
+  const backendUrl = "https://poke-express-api.herokuapp.com/"
+  console.log(backendUrl)
+
   return (
     <div className="App">
 
