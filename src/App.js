@@ -1,6 +1,6 @@
 import './App.css';
 import { Switch, Route } from "react-router-dom";
-import Navbar from './components/Navbar/Navbar'
+import SearchBar from './components/SearchBar/SearchBar'
 import Main from './components/Main/Main'
 import Footer from './components/Footer/Footer'
 
@@ -14,7 +14,7 @@ function App() {
   return (
     <div className="App">
 
-      {/* Placeholder for NAVBAR */}
+      {/* Placeholder for SearchBar */}
       <h1>Poke Fight</h1>
 
       <Switch>
