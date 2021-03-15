@@ -1,5 +1,15 @@
 .App {
-    text-align: center;
+    text-align: left;
+}
+
+.title {
+    color: #385BA9;
+}
+
+p,
+h1,
+h2 {
+    color: #385BA9;
 }
 
 .App-logo {
@@ -35,4 +45,18 @@
     to {
         transform: rotate(360deg);
     }
+}
+
+.btn-poke {
+    background-color: #385BA9;
+    color: white;
+}
+
+.btn-poke:hover {
+    background-color: #17285E;
+    color: white;
+}
+
+.logo-img {
+    max-height: 250px;
 }
