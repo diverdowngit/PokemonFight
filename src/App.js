@@ -1,46 +1,51 @@
+import React, {useState, useEffect } from 'react'
 import './App.css';
+import { getApiData } from './api'
 import { Switch, Route } from "react-router-dom";
+import MainView from './components/MainView/MainView'
+import DetailView from './components/DetailView/DetailView'
 import SearchBar from './components/SearchBar/SearchBar'
-import Main from './components/Main/Main'
-import Footer from './components/Footer/Footer'
+// import Footer from './components/Footer/Footer'
 
-
+// const backendUrl = "https://poke-express-api.herokuapp.com/api/pokemon"
+const pokeUrl = "https://pokeapi.co/api/v2/pokemon?limit=20"
 
 function App() {
 
-  const backendUrl = "https://poke-express-api.herokuapp.com/"
-  console.log(backendUrl)
 
-  return (
-    <div className="App">
+    return (
+      <div className="App">
 
-      {/* Placeholder for SearchBar */}
-      <h1>Poke Fight</h1>
+        <div className="text-center">
+          POKE FIGHT IMG PLACEHOLDER
+        </div>
 
-      <Switch>
+        <SearchBar />
 
-        <Route exact path="/">
-          {/* Placeholder for ALL POKEMONS */}
-        </Route>
+        <Switch>
+          <Route exact path="/">
+            <MainView />
+          </Route>
 
-        <Route exact path="/:id">
-            {/* Placeholder for ONE POKEMON */}
-        </Route>
+          <Route exact path="/:id">
+              <DetailView />
+          </Route>
 
-        <Route exact path="/fight">
-            {/* Placeholder for POKEMON FIGHT */}
-        </Route>
+          <Route exact path="/fight">
+              {/* Placeholder for POKEMON FIGHT */}
+          </Route>
 
-        <Route exact path="/scores">
-            {/* Placeholder for SCORE */}
-        </Route>
+          <Route exact path="/scores">
+              {/* Placeholder for SCORE */}
+          </Route>
 
-      </Switch>
+        </Switch>
 
-      {/* Placeholder for FOOTER */}
+        {/* Placeholder for FOOTER */}
 
-    </div>
-  );
+      </div>
+    );
 }
+
 
 export default App;
