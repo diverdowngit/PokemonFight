@@ -16,7 +16,7 @@ function App() {
     return (
       <div className="App">
 
-        <div className="text-center">
+        <div className="text-center p-4">
           POKE FIGHT IMG PLACEHOLDER
         </div>
 
