@@ -6,7 +6,7 @@ import MainView from './components/MainView/MainView'
 import DetailView from './components/DetailView/DetailView'
 import SearchBar from './components/SearchBar/SearchBar'
 // import Footer from './components/Footer/Footer'
-
+import Logo from './images/pokemon-image.png'
 
 import { Button } from 'semantic-ui-react'
 
@@ -21,7 +21,7 @@ function App() {
 
 
         <div className="text-center p-4">
-          POKE FIGHT IMG PLACEHOLDER
+        <img src={Logo} alt="Logo" />
         </div>
 
         <div>
