@@ -7,6 +7,9 @@ import DetailView from './components/DetailView/DetailView'
 import SearchBar from './components/SearchBar/SearchBar'
 // import Footer from './components/Footer/Footer'
 
+
+import { Button } from 'semantic-ui-react'
+
 // const backendUrl = "https://poke-express-api.herokuapp.com/api/pokemon"
 const pokeUrl = "https://pokeapi.co/api/v2/pokemon?limit=20"
 
@@ -16,9 +19,15 @@ function App() {
     return (
       <div className="App">
 
+
         <div className="text-center p-4">
           POKE FIGHT IMG PLACEHOLDER
         </div>
+
+        <div>
+    <Button primary>Primary</Button>
+    <Button secondary>Secondary</Button>
+  </div>
 
         <SearchBar />
 
