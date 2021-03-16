@@ -23,7 +23,7 @@ function App() {
         <div className="text-center p-4">
         <img src={Logo} alt="Logo" />
         </div>
-
+     
         <div>
     <Button primary>Primary</Button>
     <Button secondary>Secondary</Button>
