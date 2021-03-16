@@ -48,10 +48,8 @@ h2 {
 }
 
 .btn-poke {
-    background-color: #385BA9; 
+    background-color: #385BA9;
     color: white;
-   
-
 }
 
 .btn-poke:hover {
@@ -61,4 +59,9 @@ h2 {
 
 .logo-img {
     max-height: 250px;
+}
+
+.spinner {
+    width: 100%;
+    height: 100%
 }

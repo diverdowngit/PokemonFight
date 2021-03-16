@@ -7,30 +7,64 @@ import DetailView from './components/DetailView/DetailView'
 import SearchBar from './components/SearchBar/SearchBar'
 // import Footer from './components/Footer/Footer'
 import Logo from './images/pokemon-image.png'
-
-import { Button } from 'semantic-ui-react'
+import spinner from './images/spinner.gif'
 
 // const backendUrl = "https://poke-express-api.herokuapp.com/api/pokemon"
-const pokeUrl = "https://pokeapi.co/api/v2/pokemon?limit=20"
+const pokeUrl = "https://pokeapi.co/api/v2/pokemon?limit=18"
 
-function App() {
+const App = () => {
 
+  const [pokemons, setPokemons] = useState([]);
+  const [loading, setLoading] = useState(true)
+  
 
-    return (
+  useEffect(() => {
+    const fetchAllPokes = () => {
+      getApiData(pokeUrl).then(
+        (allpokemon) => {
+          allpokemon.results.forEach((pokemon) => {
+            fetchPokemonData(pokemon); 
+          })
+        })
+     }
+    fetchAllPokes()
+  }, []);
+
+  const fetchPokemonData = (pokemon) => {
+    let url = pokemon.url
+
+    getApiData(url)
+      .then((pokeData) => {
+        setLoading(false);
+        setPokemons(prevData => [pokeData, ...prevData]);
+      })
+    }
+  
+    if (loading) {
+      return (
+        <div>
+          <img src={spinner} alt="spinner" className="spinner"/>
+        </div>
+      )
+    }
+  
+    if (pokemons) {
+    
+      return (
       <div className="App">
 
-
-        <div className="text-center p-4">
-        <img src={Logo} alt="Logo" />
+        <div className="text-center pb-2">
+          <img src={Logo} alt="logo" className="logo-img"/>
         </div>
      
      
 
         <SearchBar />
 
+
         <Switch>
           <Route exact path="/">
-            <MainView />
+            <MainView pokemons={pokemons}/>
           </Route>
 
           <Route exact path="/:id">
@@ -46,12 +80,13 @@ function App() {
           </Route>
 
         </Switch>
-
         {/* Placeholder for FOOTER */}
 
       </div>
-    );
+);
+} else {
+  return <h1>WTF</h1>
 }
-
+}
 
 export default App;
