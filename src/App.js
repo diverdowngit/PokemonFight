@@ -24,10 +24,7 @@ function App() {
         <img src={Logo} alt="Logo" />
         </div>
      
-        <div>
-    <Button primary>Primary</Button>
-    <Button secondary>Secondary</Button>
-  </div>
+     
 
         <SearchBar />
 
