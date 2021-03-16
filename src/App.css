@@ -48,8 +48,10 @@ h2 {
 }
 
 .btn-poke {
-    background-color: #385BA9;
+    background-color: #385BA9; 
     color: white;
+   
+
 }
 
 .btn-poke:hover {
