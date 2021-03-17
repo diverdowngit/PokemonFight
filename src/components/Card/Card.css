@@ -7,5 +7,11 @@
     background-clip: border-box;
     border: 1px solid rgba(0, 0, 0, .125);
     border-radius: .25rem;
-    max-height: 30vh;
+    max-height: 25vh;
+    align-items: center;
+}
+
+.card-img {
+    width: 100px;
+    height: 100px;
 }

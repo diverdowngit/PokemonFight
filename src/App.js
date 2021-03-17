@@ -10,7 +10,7 @@ import Logo from './images/pokemon-image.png'
 import spinner from './images/spinner.gif'
 
 // const backendUrl = "https://poke-express-api.herokuapp.com/api/pokemon"
-const pokeUrl = "https://pokeapi.co/api/v2/pokemon?limit=18"
+const pokeUrl = "https://pokeapi.co/api/v2/pokemon?limit=90"
 
 const App = () => {
 
@@ -36,7 +36,7 @@ const App = () => {
     getApiData(url)
       .then((pokeData) => {
         setLoading(false);
-        setPokemons(prevData => [pokeData, ...prevData]);
+        setPokemons(prevData => [...prevData, pokeData]);
       })
     }
   
