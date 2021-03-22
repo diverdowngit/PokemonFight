@@ -1,0 +1,51 @@
+.copyrightSign {
+    height: 50px;
+    padding: center;
+    text-align: center;
+    border: 1px solid green;
+    opacity: 75%;
+}
+
+footer {
+    animation-name: example;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes example {
+    15% {
+        background-color: #CC66FF;
+        left: 0px;
+        top: 0px;
+    }
+    28% {
+        background-color: red;
+        left: 0px;
+        top: 0px;
+    }
+    42% {
+        background-color: orange;
+        left: 200px;
+        top: 0px;
+    }
+    56% {
+        background-color: yellow;
+        left: 200px;
+        top: 200px;
+    }
+    70% {
+        background-color: green;
+        left: 0px;
+        top: 200px;
+    }
+    84% {
+        background-color: blue;
+        left: 0px;
+        top: 0px;
+    }
+    100% {
+        background-color: indigo;
+        left: 0px;
+        top: 0px;
+    }
+}

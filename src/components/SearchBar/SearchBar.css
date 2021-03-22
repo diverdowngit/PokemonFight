@@ -1,0 +1,15 @@
+.input-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.search-bar {
+    height: 80px;
+    padding: 5px;
+    text-align: center;
+    border-radius: 10px;
+}
