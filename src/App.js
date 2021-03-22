@@ -8,6 +8,7 @@ import SearchBar from './components/SearchBar/SearchBar'
 // import Footer from './components/Footer/Footer'
 import Logo from './images/pokemon-image.png'
 import spinner from './images/spinner.gif'
+import FightView from './components/FightView/FightView';
 
 // const backendUrl = "https://poke-express-api.herokuapp.com/api/pokemon"
 const pokeUrl = "https://pokeapi.co/api/v2/pokemon?limit=90"
@@ -71,8 +72,8 @@ const App = () => {
               <DetailView />
           </Route>
 
-          <Route exact path="/fight">
-              {/* Placeholder for POKEMON FIGHT */}
+          <Route exact path="/fight/:pokeId/:opponentId">
+              <FightView />
           </Route>
 
           <Route exact path="/scores">

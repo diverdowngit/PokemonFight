@@ -2,6 +2,7 @@ import React, {useState, useEffect } from 'react'
 import { useParams } from "react-router-dom";
 import { getApiData } from '../../api'
 import { Link } from "react-router-dom";
+import spinner from '../../images/spinner.gif'
 
 
 
@@ -9,7 +10,7 @@ const DetailView = () => {
     const { id } = useParams()
     const [pokemon, setPokemon] = useState()
     const [loading, setLoading] = useState(true)
-
+    const random = Math.floor(Math.random() * 500);
 
     useEffect(() => {
         getApiData(`https://pokeapi.co/api/v2/pokemon/${id}`)
@@ -19,18 +20,19 @@ const DetailView = () => {
         })
         .catch(e => console.log(e))
     }, [id]);
-
-
-    pokemon && console.log(pokemon)
-
+    
 
     if (loading) {
-        return <h1>Loading...</h1>
+        return (
+          <div>
+            <img src={spinner} alt="spinner" className="spinner"/>
+          </div>
+        )
       }
 
     if (pokemon) {
         return (
-            <div className="container">
+            <div className="container bg-light rounded">
                 <div className="py-3">
                 <h2>{pokemon.name}</h2>
 
@@ -69,8 +71,8 @@ const DetailView = () => {
                 <Link to="/">
                     <button className="btn btn-outline-dark my-5">Back</button>
                 </Link>
-                <Link to="/">
-                    <button className="btn btn-poke my-5 m-3">Select</button>
+                <Link to={`/fight/${id}/${random}`} >
+                    <button className="btn btn-poke my-5 m-3">Fight</button>
                 </Link>
                 
             </div>

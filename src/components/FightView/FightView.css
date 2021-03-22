@@ -1,0 +1,12 @@
+.fight-card {
+    background-color: rgb(230, 240, 248);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    word-wrap: break-word;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: .25rem;
+    align-items: center;
+    padding: 30px;
+}
