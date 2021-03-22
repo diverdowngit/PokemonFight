@@ -1,17 +1,20 @@
 import React, {useState, useEffect } from 'react'
 import { useParams } from "react-router-dom";
 import { getApiData } from '../../api'
+import { Link } from "react-router-dom";
 import spinner from '../../images/spinner.gif'
 import FightCard from '../FightCard/FightCard';
 import './FightView.css'
 
-const FightView = ({ random }) => {
+const FightView = () => {
     const { pokeId, opponentId } = useParams()
     const [pokemon, setPokemon] = useState()
     const [opponent, setOpponent] = useState()
     const [pokemonScore, setPokemonScore] = useState(100)
     const [opponentScore, setOpponentScore] = useState(100)
     const [loading, setLoading] = useState(true)
+
+    const random = (factor) => Math.floor(Math.random() * factor);
 
     useEffect(() => {    
         getApiData(`https://pokeapi.co/api/v2/pokemon/${opponentId}`)
@@ -31,8 +34,15 @@ const FightView = ({ random }) => {
     }, [pokeId]);
 
 
+    const calcFight = () => {
+        
+    }
+
+
     const fight = () => {
-        console.log("fighting...")
+        console.log(opponentScore)
+        setOpponentScore(opponentScore => opponentScore - random(30));
+        setPokemonScore(pokemonScore => pokemonScore - random(30));
       }
 
 
@@ -56,6 +66,9 @@ const FightView = ({ random }) => {
                    <FightCard pokemon={opponent} setAction={setOpponent} score={opponentScore}/>
          
                 </div>
+                <Link to="/">
+                    <button className="btn btn-outline-dark my-5">Back</button>
+                </Link>
                 <button className="btn btn-poke my-5" onClick={fight}>Fight</button>
 
             </div>
