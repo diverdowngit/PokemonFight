@@ -5,7 +5,7 @@ import { Switch, Route } from "react-router-dom";
 import MainView from './components/MainView/MainView'
 import DetailView from './components/DetailView/DetailView'
 import SearchBar from './components/SearchBar/SearchBar'
-// import Footer from './components/Footer/Footer'
+import Footer from './components/Footer/Footer'
 import Logo from './images/pokemon-image.png'
 import spinner from './images/spinner.gif'
 import FightView from './components/FightView/FightView';
@@ -81,7 +81,7 @@ const App = () => {
           </Route>
 
         </Switch>
-        {/* Placeholder for FOOTER */}
+        <Footer />
 
       </div>
 );

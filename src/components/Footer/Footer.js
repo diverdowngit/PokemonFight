@@ -3,8 +3,8 @@ import './Footer.css'
 
 function Footer() {
     return (
-        <div>
-            <footer className="copyrightSign">@  Copyright by Fred Alicia Mustafa</footer>
+        <div className="pt-3">
+            <footer className="copyrightSign p-3">@  Copyright by Fred Alicia Mustafa</footer>
         </div>
     )
 }
