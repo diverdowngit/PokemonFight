@@ -11,7 +11,7 @@ const SearchBar = () => (
             type="text"
             id="header-search"
             className="search-bar"
-            placeholder="Search blog posts"
+            placeholder="Search pokemon..."
             name="s" 
         />
         <button type="submit" className="search-bar">Search</button>
