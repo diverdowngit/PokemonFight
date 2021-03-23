@@ -8,5 +8,15 @@
     border: 1px solid rgba(0, 0, 0, .125);
     border-radius: .25rem;
     align-items: center;
-    padding: 30px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.btn-container {
+    padding: 10px;
+    background-color: rgb(230, 240, 248);
+    height: 100%;
+    border-radius: .25rem;
 }

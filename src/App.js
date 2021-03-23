@@ -4,13 +4,12 @@ import { getApiData } from './api'
 import { Switch, Route } from "react-router-dom";
 import MainView from './components/MainView/MainView'
 import DetailView from './components/DetailView/DetailView'
-import SearchBar from './components/SearchBar/SearchBar'
 import Footer from './components/Footer/Footer'
 import Logo from './images/pokemon-image.png'
 import spinner from './images/spinner.gif'
 import FightView from './components/FightView/FightView';
+import ScoreView from './components/ScoreView/ScoreView';
 
-// const backendUrl = "https://poke-express-api.herokuapp.com/api/pokemon"
 const pokeUrl = "https://pokeapi.co/api/v2/pokemon?limit=90"
 
 const App = () => {
@@ -58,14 +57,14 @@ const App = () => {
           <img src={Logo} alt="logo" className="logo-img"/>
         </div>
      
-     
-
-        <SearchBar />
-
 
         <Switch>
           <Route exact path="/">
             <MainView pokemons={pokemons}/>
+          </Route>
+
+          <Route exact path="/scores">
+            <ScoreView />
           </Route>
 
           <Route exact path="/:id">
@@ -76,9 +75,8 @@ const App = () => {
               <FightView />
           </Route>
 
-          <Route exact path="/scores">
-              {/* Placeholder for SCORE */}
-          </Route>
+
+
 
         </Switch>
         <Footer />

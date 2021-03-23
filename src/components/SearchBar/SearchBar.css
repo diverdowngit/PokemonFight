@@ -8,8 +8,9 @@
 }
 
 .search-bar {
-    height: 80px;
+    height: 50px;
     padding: 5px;
     text-align: center;
     border-radius: 10px;
+    margin-bottom: 10px;
 }

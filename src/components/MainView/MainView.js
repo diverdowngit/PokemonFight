@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
 import './MainView.css'
 import Card from '../Card/Card'
+import SearchBar from '../SearchBar/SearchBar'
+
 import ReactPaginate from 'react-paginate';
 
 export default function MainView({ pokemons }) {
@@ -27,6 +29,8 @@ export default function MainView({ pokemons }) {
 
     return (
         <div className="container">
+                    <SearchBar />
+
             <div className="row text-center container-fluid">
                 {currentPageData}
             </div>

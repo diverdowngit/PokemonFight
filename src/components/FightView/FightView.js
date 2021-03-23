@@ -4,7 +4,9 @@ import { getApiData } from '../../api'
 import { Link } from "react-router-dom";
 import spinner from '../../images/spinner.gif'
 import FightCard from '../FightCard/FightCard';
+import VertBar from '../VertBar/VertBar';
 import './FightView.css'
+const axios = require('axios');
 
 const FightView = () => {
     const { pokeId, opponentId } = useParams()
@@ -14,7 +16,6 @@ const FightView = () => {
     const [opponentScore, setOpponentScore] = useState(100)
     const [loading, setLoading] = useState(true)
     const [gameOver, setGameOver] = useState(false)
-    const [hurra, setHurra] = useState(false)
     const [pokemonWon, setPokemonWon] = useState(false)
     const [opponentWon, setOpponentWon] = useState(false)
 
@@ -47,6 +48,21 @@ const FightView = () => {
 
 
  
+    const saveGame = async () => {
+        const response = await axios.post(
+            'https://poke-express-api.herokuapp.com/api/v1/score',
+            { 
+                user: `6050dd4f3146d8ebba7cd373`,
+                user_pokemon: pokemon.name,
+                opponent_pokemon: opponent.name,
+                user_wins: pokemonWon
+             },
+            { headers: { 'Content-Type': 'application/json' } }
+          )
+          console.log(response.data)
+    }
+
+
 
     const calcFight = ( ownScore, attacker, victim ) => {
         // [1] attack
@@ -80,16 +96,24 @@ const FightView = () => {
 
     const fight = () => {
 
-        if (pokemonScore <= 0) {
-            setGameOver(true)
-            setOpponentWon(true)
-        } else if (opponentScore <= 0) {
-            setGameOver(true)
-            setPokemonWon(true)
-        }
 
         setOpponentScore(opponentScore => calcFight(opponentScore, pokemon, opponent));
         setPokemonScore(pokemonScore => calcFight(pokemonScore, opponent, pokemon));
+
+
+        if (pokemonScore <= 0) {
+            setGameOver(true);
+            setOpponentWon(true);
+            saveGame();
+
+            
+        } else if (opponentScore <= 0) {
+            setGameOver(true);
+            setPokemonWon(true);
+            saveGame();
+
+        }
+
     }
 
 
@@ -102,29 +126,37 @@ const FightView = () => {
       }
 
 
-      opponent && console.log(opponent)
-
     if (pokemon && opponent) {
         return (
+            <>
+            <VertBar />
             <div className="container">
                 <div className="container row text-center">
-                    {pokemonWon && <h1 className="text-dark">USER WON</h1>}
-                    {opponentWon && <h1 className="text-dark">Opponent WON</h1>}
+                    {pokemonWon && <h1 className="text-white">USER WON</h1>}
+                    {opponentWon && <h1 className="text-white">Opponent WON</h1>}
                    
                    <FightCard pokemon={pokemon} setAction={setPokemon} score={pokemonScore}/>
                    <FightCard pokemon={opponent} setAction={setOpponent} score={opponentScore}/>
          
                 </div>
-                <Link to="/">
-                    <button className="btn btn-outline-dark my-5">Back</button>
-                </Link>
-                <button className="btn btn-outline-dark my-5" onClick={reset}>Reset</button>
-                <Link to={`/${pokeId}`}>
-                    <button className="btn btn-outline-dark my-5">Same pokemon - new opponent</button>
-                </Link>
-                <button className={`btn btn-poke my-5 ${gameOver && "disabled"}`} onClick={fight} >Fight</button>
+                <div className="fight-btn text-center">
+                    <button className={`btn btn-danger btn-lg m-1 ${gameOver && "disabled"}`} onClick={fight} >Fight</button>
+                </div>
 
+
+                <div className="btn-container">
+                    <Link to="/">
+                        <button className="btn btn-outline-dark m-1">Home</button>
+                    </Link>
+                    <Link to={`/${pokeId}`}>
+                        <button className="btn btn-outline-dark m-1 mr-5">Same pokemon - new opponent</button>
+                    </Link>
+                    <button className="btn btn-outline-danger m-1" onClick={reset}>Reset</button>
+
+                </div>
+               
             </div>
+            </>
         )
     } else {
         return <h1>Error</h1>
