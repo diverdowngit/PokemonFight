@@ -17,18 +17,21 @@ const App = () => {
   const [pokemons, setPokemons] = useState([]);
   const [loading, setLoading] = useState(true)
   
-
   useEffect(() => {
-    const fetchAllPokes = () => {
-      getApiData(pokeUrl).then(
-        (allpokemon) => {
-          allpokemon.results.forEach((pokemon) => {
-            fetchPokemonData(pokemon); 
-          })
-        })
-     }
     fetchAllPokes()
   }, []);
+
+
+
+  const fetchAllPokes = () => {
+    getApiData(pokeUrl).then(
+      (allpokemon) => {
+        allpokemon.results.forEach((pokemon) => {
+          fetchPokemonData(pokemon); 
+        })
+      })
+   }
+
 
   const fetchPokemonData = (pokemon) => {
     let url = pokemon.url

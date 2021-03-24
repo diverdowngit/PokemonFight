@@ -10,6 +10,7 @@ const axios = require('axios');
 
 const FightView = () => {
     const { pokeId, opponentId } = useParams()
+
     const [pokemon, setPokemon] = useState()
     const [opponent, setOpponent] = useState()
     const [pokemonScore, setPokemonScore] = useState(100)
@@ -18,16 +19,6 @@ const FightView = () => {
     const [gameOver, setGameOver] = useState(false)
     const [pokemonWon, setPokemonWon] = useState(false)
     const [opponentWon, setOpponentWon] = useState(false)
-
-    const reset = () => {
-        setPokemonScore(100)
-        setOpponentScore(100)
-        setOpponentWon(false)
-        setOpponentWon(false)
-        setGameOver(false)
-    }
-
-    const random = (factor) => Math.floor(Math.random() * factor);
 
     useEffect(() => {    
         getApiData(`https://pokeapi.co/api/v2/pokemon/${opponentId}`)
@@ -47,7 +38,24 @@ const FightView = () => {
     }, [pokeId]);
 
 
+    useEffect(() => {
+        if (pokemonWon || opponentWon) {
+            setGameOver(true);
+            saveGame();
+        }
+    }, [pokemonWon, opponentWon])
  
+
+    const reset = () => {
+        setPokemonScore(100)
+        setOpponentScore(100)
+        setOpponentWon(false)
+        setPokemonWon(false)
+        setGameOver(false)
+    }
+
+    const random = (factor) => Math.floor(Math.random() * factor);
+
     const saveGame = async () => {
         const response = await axios.post(
             'https://poke-express-api.herokuapp.com/api/v1/score',
@@ -64,7 +72,7 @@ const FightView = () => {
 
 
 
-    const calcFight = ( ownScore, attacker, victim ) => {
+    const calcFight = ( oldScore, attacker, victim ) => {
         // [1] attack
         // [2] defence
         // [3] special-attack
@@ -73,47 +81,30 @@ const FightView = () => {
         // substract attackpoints from opponent to own score / 3
         // add own defence points / 9
         let lucky = random(4)
-        let score = ownScore 
+        let score = oldScore 
                     - random(attacker.stats[1].base_stat/3) 
                     + random(victim.stats[2].base_stat/9) 
                     + random(victim.stats[5].base_stat/19)
-        // if lucky add bit of defence
-        if (lucky === 1) {
-            console.log("lucky")
-            score += random(victim.stats[4].base_stat/5) 
-        }
-        // if unlucky reinforce ooponent attack
-        if (lucky === 0) {
-            console.log("unlucky")
-            score -= random(attacker.stats[3].base_stat/5)
-        }
 
-        if (score >= ownScore) return ownScore
+        // if lucky add bit of defence
+        if (lucky === 1) score += random(victim.stats[4].base_stat/5) 
+        // if unlucky reinforce ooponent attack
+        if (lucky === 0) score -= random(attacker.stats[3].base_stat/5)
+
+        if (score >= oldScore) return oldScore
         if (score <= 0) return 0
         return score
     }
 
+    const fight = async () => {
+        const poke = await calcFight(pokemonScore, opponent, pokemon)
+        const oppo = await calcFight(opponentScore, pokemon, opponent)
 
-    const fight = () => {
-
-
-        setOpponentScore(opponentScore => calcFight(opponentScore, pokemon, opponent));
-        setPokemonScore(pokemonScore => calcFight(pokemonScore, opponent, pokemon));
-
-
-        if (pokemonScore <= 0) {
-            setGameOver(true);
-            setOpponentWon(true);
-            saveGame();
-
-            
-        } else if (opponentScore <= 0) {
-            setGameOver(true);
-            setPokemonWon(true);
-            saveGame();
-
-        }
-
+        setPokemonScore(poke);
+        setOpponentScore(oppo);
+        
+        if (poke <= 0) setOpponentWon(true);
+        if (oppo <= 0) setPokemonWon(true);
     }
 
 
