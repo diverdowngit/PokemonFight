@@ -14,6 +14,7 @@ export default function MainView({ pokemons, error }) {
                             .slice(offset, offset + PER_PAGE)
                             .map((pokemon) => {
                                 num++;
+                                console.log(pokemon)
                                 return <Card key={num} {...pokemon} />
                             });
 

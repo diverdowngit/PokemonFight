@@ -120,9 +120,11 @@ const FightView = () => {
     if (pokemon && opponent) {
         return (
             <>
-            <VertBar />
+            
             <div className="container">
+           
                 <div className="container row text-center">
+                <VertBar />
                     {pokemonWon && <h1 className="text-white">USER WON</h1>}
                     {opponentWon && <h1 className="text-white">Opponent WON</h1>}
                    
@@ -150,7 +152,11 @@ const FightView = () => {
             </>
         )
     } else {
-        return <h1>Error</h1>
+        return (
+            <div>
+              <img src={spinner} alt="spinner" className="spinner"/>
+            </div>
+          )
     }
 
    

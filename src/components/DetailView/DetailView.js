@@ -81,7 +81,11 @@ const DetailView = () => {
             </>
         )
     } else {
-        return <h1>Error</h1>
+        return (
+            <div>
+              <img src={spinner} alt="spinner" className="spinner"/>
+            </div>
+          )
     }
    
 }
