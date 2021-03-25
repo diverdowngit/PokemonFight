@@ -125,8 +125,8 @@ const FightView = () => {
            
                 <div className="container row text-center">
                 <VertBar />
-                    {pokemonWon && <h1 className="text-white">USER WON</h1>}
-                    {opponentWon && <h1 className="text-white">Opponent WON</h1>}
+                    {pokemonWon && <h1 className="yellow">USER WON</h1>}
+                    {opponentWon && <h1 className="yellow">OPPONENT WON</h1>}
                    
                    <FightCard pokemon={pokemon} setAction={setPokemon} score={pokemonScore}/>
                    <FightCard pokemon={opponent} setAction={setOpponent} score={opponentScore}/>
