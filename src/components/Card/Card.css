@@ -7,7 +7,7 @@
     background-clip: border-box;
     border: 1px solid rgba(0, 0, 0, .125);
     border-radius: .25rem;
-    min-height: 30vh;
+    min-height: 25vh;
     align-items: center;
 }
 
