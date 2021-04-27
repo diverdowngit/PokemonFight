@@ -4,7 +4,7 @@ import './Footer.css'
 function Footer() {
     return (
         <div className="pt-3">
-            <footer className="copyrightSign p-3">@  Copyright by Fred Alicia Mustafa</footer>
+            <footer className="copyrightSign p-3">@  Copyright by Fred & Alicia </footer>
         </div>
     )
 }
