@@ -11,7 +11,7 @@ import FightView from './components/FightView/FightView';
 import ScoreView from './components/ScoreView/ScoreView';
 import SearchBar from './components/SearchBar/SearchBar';
 
-const pokeUrl = "https://pokeapi.co/api/v2/pokemon?limit=90"
+const pokeUrl = "http://pokeapi.co/api/v2/pokemon?limit=90"
 
 const App = () => {
 
