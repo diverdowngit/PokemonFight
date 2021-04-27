@@ -41,8 +41,10 @@ const FightView = () => {
     useEffect(() => {
         if (pokemonWon || opponentWon) {
             setGameOver(true);
-            saveGame();
+            saveGame(true);
         }
+        
+             // eslint-disable-next-line 
     }, [pokemonWon, opponentWon])
  
 

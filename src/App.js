@@ -27,6 +27,7 @@ const App = () => {
 
   useEffect(() => {
     triggerSearch(search)
+     // eslint-disable-next-line 
   }, [search])
 
   const handleUserInput = (e) => {
